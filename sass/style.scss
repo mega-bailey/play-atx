@@ -150,9 +150,9 @@ path {
   font-size: $default-font-size;
   letter-spacing: 1.3px;
   font-weight: 300;
-  &--changeWord {
-    width: 50rem;
-  }
+}
+.changeWord {
+  width: 5rem;
 }
 
 //***** NAVBAR *****//
@@ -342,7 +342,15 @@ header {
       width: 80%;
       display: flex;
       align-items: center;
-      padding: 5rem 15rem;
+      padding: 5rem 12rem;
+    }
+    @include respond(tab-port) {
+      // width < 900?
+      padding: 5rem 5rem;
+    }
+    @include respond(phone) {
+      // width < 600?
+      padding: 3rem 1rem;
     }
   }
   &--right {
@@ -367,7 +375,6 @@ header {
     @include respond(tab-land) {
       // width < 1200?
       position: relative;
-      // float: left;
       width: 30%;
     }
 
@@ -416,32 +423,55 @@ header {
   width: 100%;
   color: $dark-grey;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
-  padding: 5rem 20rem;
+  padding: 10rem 15rem;
+  @include respond(tab-land) {
+    // width < 1200?
+    padding: 5rem 5rem;
+  }
+  @include respond(tab-port) {
+    // width < 900?
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
 }
 
 .feature-column {
   background-color: rgba($white, 0.7);
   color: $dark-grey;
   border-radius: 10px;
-  width: 100%;
-  height: auto;
-  padding: 3.5rem;
+  padding: 3rem;
   text-align: center;
   box-shadow: 1rem 1rem 3rem rgba($black, 0.3);
   &:not(:last-child) {
-    margin-right: 5rem;
+    margin-right: 3rem;
+  }
+  @include respond(tab-land) {
+    // width < 1200?
+    padding: 3rem 1rem;
+    &:not(:last-child) {
+      margin-right: 1.5rem;
+    }
+  }
+  @include respond(tab-port) {
+    // width < 900?
+    &:not(:last-child) {
+      margin-right: 0;
+      margin-bottom: 3rem;
+    }
   }
 }
 
 .feature-box {
+  width: 20rem;
+  height: 25rem;
   &__heading {
     font-display: $font-display;
     font-size: 1.8rem;
     font-weight: 600;
     letter-spacing: 1.3px;
-    text-align: center;
   }
   &__icon {
     height: 4.5rem;
@@ -457,6 +487,11 @@ header {
     font-size: $default-font-size;
     letter-spacing: 1.3px;
     font-weight: 400;
+  }
+  @include respond(tab-port) {
+    // width < 900?
+    width: 40rem;
+    height: 20rem;
   }
 }
 
@@ -530,20 +565,26 @@ header {
 
 //***** CONTACT SECTION *****//
 #contact {
-  min-height: 90vh;
+  min-height: 80vh;
   width: 100%;
   color: $dark-grey;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 .row--contact {
-  width: 30%;
+  margin: 0 auto;
+  width: 50%;
 }
 
 .form {
   font-size: $default-font-size;
-  width: 100%;
+
+  &__heading {
+    text-align: center;
+    letter-spacing: 1.3px;
+  }
   &__input {
     font-size: 1.5rem;
     font-family: inherit;
@@ -554,7 +595,7 @@ header {
     background-color: rgba($dark-grey, 0.2);
     border: none;
     border-bottom: 3px solid $dark-grey;
-    width: 90%;
+    width: 100%;
     display: block;
     transition: all 0.3s;
 
@@ -566,6 +607,14 @@ header {
     }
     &::-webkit-input-placeholder {
       color: $dark-grey;
+    }
+  }
+  &__group {
+    margin: 0 auto;
+    width: 50%;
+    padding-bottom: 1rem;
+    &--btn {
+      text-align: center;
     }
   }
 
@@ -587,9 +636,12 @@ header {
   }
 
   &__radio-group {
-    width: 45%;
+    width: 40%;
     display: inline-block;
     margin: 1rem;
+    @include respond(phone) {
+      width: 50%;
+    }
   }
 
   &__radio-input {
@@ -640,7 +692,7 @@ header {
 //***** FOOTER *****//
 
 #footer {
-  padding: 5rem 0 6rem 0;
+  padding: 2rem 0 6rem 0;
   background-color: rgba($black, 0.2);
 }
 .footer {
