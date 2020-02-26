@@ -1,3 +1,5 @@
+@import 'mixins';
+
 $white: white;
 $dark-grey: #222222;
 $black: #000000;
@@ -25,6 +27,20 @@ $default-font-size: 1.5rem;
 html {
   /* 1rem = 10px;  10px/16px = 62.5% */
   font-size: 62.5%;
+
+  @include respond(tab-land) {
+    // width < 1200?
+    font-size: 56.25%; //1 rem = 9px, 9/16 = 50%
+  }
+
+  @include respond(tab-port) {
+    // width < 900?
+    font-size: 50%; //1 rem = 8px, 8/16 = 50%
+  }
+
+  @include respond(big-desktop) {
+    font-size: 75%; //1rem = 12, 12/16
+  }
 }
 
 body {
@@ -39,6 +55,16 @@ section {
   width: 100%;
 }
 
+//***** SVG WAVE *****//
+.wave {
+  position: relative;
+  width: 100%;
+}
+path {
+  position: absolute;
+  width: 100%;
+}
+
 //***** BUTTONS *****//
 .btn {
   border-radius: 20rem;
@@ -49,13 +75,10 @@ section {
   transition: box-shadow 0.3s ease-in-out;
   text-transform: uppercase;
   cursor: pointer;
-
   &--main {
+    margin-top: 3rem;
     padding: 2rem 2.5rem;
     color: $white;
-    position: absolute;
-    bottom: 18%;
-    left: 23%;
     background-color: $dark-grey;
     box-shadow: 0 5px 5px rgba($black, 0.3);
     &:hover {
@@ -64,6 +87,13 @@ section {
     &:focus {
       border: none;
       outline: none;
+    }
+    @include respond(tab-port) {
+      // width < 900?
+      position: absolute;
+      bottom: -50%;
+      left: 50%;
+      transform: translate(-50%, -10%);
     }
   }
   &--about {
@@ -93,54 +123,11 @@ section {
     }
   }
 }
-
-//***** TYPOGRAPHY *****//
-// .section-heading {
-//   &--div {
-//     display: inline-block;
-//     top: 10%;
-//     left: 50%;
-//     transform: translate(-50%, -50%);
-//     position: absolute;
-//   }
-//   padding-top: 2rem;
-//   font-size: 5rem;
-//   letter-spacing: 1.5px;
-//   text-transform: uppercase;
-//   font-family: $font-display;
-//   font-weight: 400;
-//   text-align: center;
-//   &__about {
-//     background-image: linear-gradient(to right, $teal, $darkblue);
-//     background-clip: text;
-//     -webkit-background-clip: text;
-//     color: transparent;
-//   }
-//   &__testimonials {
-//     background-image: linear-gradient(to right, $yellow, $coral);
-//     background-clip: text;
-//     -webkit-background-clip: text;
-//     color: transparent;
-//   }
-//   &__contact {
-//     font-size: 3rem;
-//     background-image: linear-gradient(to right, $orange, $pink);
-//     background-clip: text;
-//     -webkit-background-clip: text;
-//     color: transparent;
-//   }
-// }
 .margin-top-xs {
   margin-top: 2rem;
 }
 .margin-top-sm {
   margin-top: 3rem;
-}
-.margin-top-md {
-  margin-top: 6rem;
-}
-.margin-top-lg {
-  margin-top: 15rem;
 }
 .margin-bottom-xs {
   margin-bottom: 1rem;
@@ -174,13 +161,24 @@ section {
   align-items: center;
   justify-content: flex-end;
   width: 100%;
-  z-index: 100;
+  z-index: 20;
   padding: 3rem 10rem 0 0;
   position: relative;
+  @include respond(tab-port) {
+    // width < 900?
+
+    justify-content: flex-start;
+  }
 }
 #nav-bar ul li {
   display: inline-block;
   justify-content: flex-end;
+  @include respond(tab-port) {
+    // width < 900?
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 3rem;
+  }
 }
 #nav-bar ul li a {
   color: $dark-grey;
@@ -213,7 +211,7 @@ header {
   position: relative;
   color: $dark-grey;
   font-family: sans-serif;
-  z-index: -1;
+  width: 100%;
 }
 .header-text {
   position: absolute;
@@ -237,12 +235,22 @@ header {
   &__city {
     font-weight: 700;
   }
+  @include respond(tab-port) {
+    // width < 900?
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 //***** HEADER SHAPES *****//
 .circle {
+  max-width: 100%;
+  z-index: -10;
   &__teal-large {
-    height: 40rem;
+    height: 35rem;
     opacity: 0.95;
     position: absolute;
     top: -7%;
@@ -250,7 +258,6 @@ header {
   }
   &__collage {
     height: auto;
-    max-width: 100%;
     position: absolute;
     top: 15%;
     right: 0;
@@ -261,7 +268,6 @@ header {
     position: absolute;
     top: 5%;
     left: -5%;
-    z-index: 1;
   }
   &__teal {
     height: 35rem;
@@ -269,14 +275,6 @@ header {
     top: 60%;
     right: 0%;
   }
-  &__blue-mini {
-    height: 12rem;
-    position: absolute;
-    opacity: 0.95;
-    top: 5%;
-    left: 5%;
-  }
-
   &__blue-small {
     height: 15rem;
     position: absolute;
@@ -306,6 +304,15 @@ header {
     top: -10%;
     left: 5%;
   }
+  @include respond(tab-land) {
+    // width < 1200?
+    max-width: 80%;
+  }
+
+  @include respond(tab-port) {
+    // width < 900?
+    max-width: 70%;
+  }
 }
 
 //***** ABOUT SECTION *****//
@@ -319,42 +326,86 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
+  @include respond(tab-land) {
+    // width < 1200?
+    flex-direction: column;
+  }
 }
 .content {
   display: flex;
+  flex-direction: column;
   &--left {
     width: 50%;
-    padding: 15rem 6rem 15rem 14rem;
+    padding: 15rem 5rem 10rem 12rem;
+    @include respond(tab-land) {
+      // width < 1200?
+      width: 80%;
+      display: flex;
+      align-items: center;
+      padding: 5rem 15rem;
+    }
   }
   &--right {
-    width: 50%;
+    width: 40%;
+    z-index: 50;
+    @include respond(tab-land) {
+      width: 80%;
+    }
   }
 }
 .collage {
   position: relative;
+  left: 5%;
+  max-width: 100%;
+
   &__img {
-    width: 45%;
+    width: 50%;
     position: absolute;
     border-radius: 2px;
     box-shadow: 0 1rem 1rem rgba($black, 0.3);
     z-index: 10;
-    transition: all 0.2s;
-    outline-offset: 2rem;
+    @include respond(tab-land) {
+      // width < 1200?
+      position: relative;
+      // float: left;
+      width: 30%;
+    }
+
     &--one {
-      left: 0;
+      left: -5%;
       top: 37%;
+      @include respond(tab-land) {
+        // width < 1200?
+        left: 1rem;
+        top: 1.5rem;
+      }
     }
     &--two {
-      right: 22%;
-      top: 27rem;
+      left: 32%;
+      top: 47%;
+      @include respond(tab-land) {
+        // width < 1200?
+        left: 0;
+        top: 0;
+      }
     }
     &--three {
       left: 19%;
-      top: 6rem;
+      top: 16%;
+      @include respond(tab-land) {
+        // width < 1200?
+        left: -1rem;
+        top: 1.5rem;
+      }
     }
     &--teal {
-      height: 65rem;
-      width: 65rem;
+      height: 50rem;
+      width: 50rem;
+      @include respond(tab-land) {
+        // width < 1200?
+        visibility: hidden;
+        display: none;
+      }
     }
   }
 }
@@ -422,10 +473,14 @@ header {
   &--yellow-pink {
     right: 0%;
     top: -25%;
+    height: 40rem;
+    max-width: 100%;
   }
   &--blue {
     left: 28%;
     bottom: -10%;
+    height: 20rem;
+    max-width: 100%;
     transform: rotate(250deg);
     z-index: 50;
   }
