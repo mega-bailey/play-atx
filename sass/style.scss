@@ -88,13 +88,13 @@ path {
       border: none;
       outline: none;
     }
-    @include respond(tab-port) {
-      // width < 900?
-      position: absolute;
-      bottom: -50%;
-      left: 50%;
-      transform: translate(-50%, -10%);
-    }
+    // @include respond(tab-port) {
+    //   // width < 900?
+    //   position: absolute;
+    //   bottom: -70%;
+    //   left: 50%;
+    //   transform: translate(-50%, -30%);
+    // }
   }
   &--about {
     font-weight: 400;
@@ -166,7 +166,6 @@ path {
   position: relative;
   @include respond(tab-port) {
     // width < 900?
-
     justify-content: flex-start;
   }
 }
@@ -231,17 +230,20 @@ header {
     font-size: 3rem;
     font-weight: 300;
     letter-spacing: 1.6px;
+    @include respond(phone) {
+      // width < 600?
+      font-size: 1.5rem;
+    }
   }
   &__city {
     font-weight: 700;
   }
   @include respond(tab-port) {
-    // width < 900?
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    text-align: center;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 }
 
@@ -255,6 +257,10 @@ header {
     position: absolute;
     top: -7%;
     right: 24%;
+    @include respond(phone) {
+      // width < 600?
+      height: 25rem;
+    }
   }
   &__collage {
     height: auto;
@@ -268,12 +274,10 @@ header {
     position: absolute;
     top: 5%;
     left: -5%;
-  }
-  &__teal {
-    height: 35rem;
-    position: absolute;
-    top: 60%;
-    right: 0%;
+    @include respond(phone) {
+      // width < 600?
+      height: 22rem;
+    }
   }
   &__blue-small {
     height: 15rem;
@@ -301,18 +305,23 @@ header {
     height: 30rem;
     opacity: 0.95;
     position: absolute;
-    top: -10%;
+    top: -12%;
     left: 5%;
+    @include respond(phone) {
+      // width < 600?
+      height: 22rem;
+      top: -22%;
+    }
   }
-  @include respond(tab-land) {
-    // width < 1200?
-    max-width: 80%;
-  }
+  // @include respond(tab-land) {
+  //   // width < 1200?
+  //   max-width: 80%;
+  // }
 
-  @include respond(tab-port) {
-    // width < 900?
-    max-width: 70%;
-  }
+  // @include respond(tab-port) {
+  //   // width < 900?
+  //   max-width: 70%;
+  // }
 }
 
 //***** ABOUT SECTION *****//
@@ -375,7 +384,7 @@ header {
     @include respond(tab-land) {
       // width < 1200?
       position: relative;
-      width: 30%;
+      width: 32%;
     }
 
     &--one {
@@ -428,13 +437,14 @@ header {
   padding: 10rem 15rem;
   @include respond(tab-land) {
     // width < 1200?
-    padding: 5rem 5rem;
+    padding: 5rem 15rem;
   }
   @include respond(tab-port) {
     // width < 900?
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    padding: 5rem 0;
   }
 }
 
@@ -457,6 +467,7 @@ header {
   }
   @include respond(tab-port) {
     // width < 900?
+
     &:not(:last-child) {
       margin-right: 0;
       margin-bottom: 3rem;
@@ -490,24 +501,24 @@ header {
   }
   @include respond(tab-port) {
     // width < 900?
-    width: 40rem;
-    height: 20rem;
+    width: 30rem;
+    height: 25rem;
   }
 }
 
 //***** TESTIMONY SECTION *****//
 #testimony {
-  min-height: 85vh;
+  min-height: 95vh;
   width: 100%;
   background-color: $dark-grey;
   color: $white;
-  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  @include respond(tab-land) {
-    // width < 1200?
-    padding: 5rem 5rem;
+  padding: 10rem 15rem;
+  @include respond(tab-port) {
+    // width < 900?
+    padding: 3rem 0;
   }
 }
 .testimony-img {
@@ -518,6 +529,13 @@ header {
     height: 40rem;
     @include respond(tab-land) {
       height: 35rem;
+    }
+    @include respond(tab-port) {
+      height: 25rem;
+      top: -10%;
+    }
+    @include respond(phone) {
+      height: 15rem;
     }
   }
   &--blue {
@@ -532,8 +550,8 @@ header {
   }
 }
 .row--testimony {
+  padding: 5rem 0;
   display: flex;
-  position: absolute;
   z-index: 10;
   @include respond(tab-port) {
     // width < 900?
@@ -560,7 +578,7 @@ header {
   }
   @include respond(tab-port) {
     // width < 900?
-    padding: 1rem 3rem 2rem 3rem;
+    padding: 2rem 3rem;
     &:not(:last-child) {
       margin-bottom: 3rem;
       margin-right: 0;
@@ -574,8 +592,6 @@ header {
     margin: 0 auto;
     width: 15rem;
     height: 15rem;
-    // -webkit-shape-outside: circle(50% at 50% 50%);
-    // shape-outside: circle(50% at 50% 50%);
     -webkit-clip-path: circle(50% at 50% 50%);
     clip-path: circle(50% at 50% 50%);
   }
@@ -593,9 +609,8 @@ header {
   }
   @include respond(tab-port) {
     // width < 900?
-    width: 50rem;
-    height: 20rem;
-    display: flex;
+    width: 28rem;
+    height: 35rem;
     align-items: center;
     text-align: right;
   }
