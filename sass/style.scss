@@ -317,7 +317,7 @@ header {
 
 //***** ABOUT SECTION *****//
 #about {
-  min-height: 90vh;
+  min-height: 85vh;
   width: 100%;
   background-color: $dark-grey;
   color: $white;
@@ -444,7 +444,7 @@ header {
   border-radius: 10px;
   padding: 3rem;
   text-align: center;
-  box-shadow: 1rem 1rem 3rem rgba($black, 0.3);
+  box-shadow: 1rem 1rem 3rem rgba($black, 0.4);
   &:not(:last-child) {
     margin-right: 3rem;
   }
@@ -502,6 +502,13 @@ header {
   background-color: $dark-grey;
   color: $white;
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include respond(tab-land) {
+    // width < 1200?
+    padding: 5rem 5rem;
+  }
 }
 .testimony-img {
   position: absolute;
@@ -509,43 +516,66 @@ header {
     right: 0%;
     top: -25%;
     height: 40rem;
-    max-width: 100%;
+    @include respond(tab-land) {
+      height: 35rem;
+    }
   }
   &--blue {
     left: 28%;
     bottom: -10%;
     height: 20rem;
-    max-width: 100%;
     transform: rotate(250deg);
     z-index: 50;
+    @include respond(tab-land) {
+      height: 15rem;
+    }
   }
 }
 .row--testimony {
   display: flex;
-  padding: 10rem 20rem;
   position: absolute;
   z-index: 10;
+  @include respond(tab-port) {
+    // width < 900?
+    display: inline-block;
+  }
 }
 .testimony-column {
   display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: rgba($white, 0.8);
   color: $dark-grey;
   border-radius: 10px;
-  width: 100%;
-  height: auto;
   padding: 3.5rem;
   text-align: center;
   &:not(:last-child) {
     margin-right: 8rem;
   }
+  @include respond(tab-land) {
+    padding: 4rem 2rem;
+    &:not(:last-child) {
+      margin-right: 2rem;
+    }
+  }
+  @include respond(tab-port) {
+    // width < 900?
+    padding: 1rem 3rem 2rem 3rem;
+    &:not(:last-child) {
+      margin-bottom: 3rem;
+      margin-right: 0;
+    }
+  }
 }
 .testimony-box {
+  width: 25rem;
+  height: 37rem;
   &__shape {
     margin: 0 auto;
     width: 15rem;
     height: 15rem;
-    -webkit-shape-outside: circle(50% at 50% 50%);
-    shape-outside: circle(50% at 50% 50%);
+    // -webkit-shape-outside: circle(50% at 50% 50%);
+    // shape-outside: circle(50% at 50% 50%);
     -webkit-clip-path: circle(50% at 50% 50%);
     clip-path: circle(50% at 50% 50%);
   }
@@ -560,6 +590,14 @@ header {
     font-size: $default-font-size;
     letter-spacing: 1.3px;
     font-weight: 400;
+  }
+  @include respond(tab-port) {
+    // width < 900?
+    width: 50rem;
+    height: 20rem;
+    display: flex;
+    align-items: center;
+    text-align: right;
   }
 }
 
@@ -723,6 +761,16 @@ header {
     display: inline-block;
     &:not(:last-child) {
       margin-right: 3rem;
+    }
+    @include respond(phone) {
+      // width < 600?
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      &:not(:last-child) {
+        margin-right: 0;
+        margin-bottom: 5px;
+      }
     }
   }
 }
