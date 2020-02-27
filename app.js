@@ -6,9 +6,9 @@ function parallax(element, distance, speed) {
 window.addEventListener('scroll', function() {
   parallax('header', window.scrollY, 0.3);
   parallax('.circle__yellow-pink', window.scrollY, 0.5);
-  parallax('.circle__teal-large', window.scrollY, 0.75);
+  parallax('.circle__teal-large', window.scrollY, 0.73);
   parallax('.circle__blue-med', window.scrollY, 0.3);
-  parallax('.circle__coral', window.scrollY, 0.73);
+  parallax('.circle__coral', window.scrollY, 0.71);
   parallax('.circle__blue-small', window.scrollY, 0.63);
 });
 

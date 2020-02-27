@@ -224,13 +224,17 @@ header {
   width: 100%;
 }
 .header-text {
-  width: 100%;
+  width: auto;
   position: absolute;
   top: 50%;
   left: 20%;
   transform: translate(-20%, -50%);
   z-index: 5;
   text-shadow: 0 5px 5px rgba($black, 0.3);
+  @include respond(tab-port) {
+    // width < 900?
+    width: 100%;
+  }
   &__h1 {
     font-family: $font-display;
     font-weight: 300;
@@ -270,18 +274,18 @@ header {
   z-index: -10;
   &__teal-large {
     height: 35rem;
-    opacity: 0.95;
+    opacity: 0.9;
     position: absolute;
     top: -7%;
     right: 24%;
-    @include respond(phone) {
+    @include respond(tab-port) {
       // width < 900?
       height: 28rem;
       right: 0%;
     }
     @include respond(phone) {
       // width < 600?
-      height: 22rem;
+      height: 20rem;
       right: 0%;
     }
   }
@@ -331,7 +335,7 @@ header {
   }
   &__purple {
     height: 30rem;
-    opacity: 0.95;
+    opacity: 0.85;
     position: absolute;
     top: -12%;
     left: 5%;
@@ -765,7 +769,7 @@ header {
 
 #footer {
   padding: 2rem 0 6rem 0;
-  background-color: #d2d2d2;
+  background-color: rgba($black, 0.2);
 }
 .footer {
   width: 100%;
